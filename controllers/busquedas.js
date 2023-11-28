@@ -32,12 +32,12 @@ const getDocumentosColeccion = async (req, res = response) => {
     switch(tabla){
         case 'medicos':
             data = await Medico.find({nombre: regex})
-                                .populate('usuario', 'nombre img');
+                                .populate('usuario', 'nombre img')
+                                .populate('hospital', 'nombre img');
             break;
         case 'hospitales':
             data = await Hospital.find({nombre: regex})
-                                .populate('usuario', 'nombre img')
-                                .populate('hospital', 'nombre img');
+                                .populate('usuario', 'nombre img');
             break;
         case 'usuarios':
             data = await Usuario.find({nombre: regex});
